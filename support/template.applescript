@@ -1,16 +1,14 @@
 on run (volumeName)
 	tell application "Finder"
 		tell disk (volumeName as string)
-			set retry to true
-			set retries to 0
-			repeat while (retry = true) and (retries < 5)
+			set retries to 5
+			repeat while retries > 0
 				try
 					open
-					retry = false
+					retry = 0
 				on error number -1712 -- Apple event timed out
 					delay 1
-					retry = true
-					set retries to retries + 1
+					set retries to retries - 1
 				end try
 			end repeat
 
@@ -51,16 +49,14 @@ on run (volumeName)
 
 			close
 
-			set retry to true
-			set retries to 0
-			repeat while (retry = true) and (retries < 5)
+			set retries to 5
+			repeat while retries > 0
 				try
 					open
-					retry = false
+					retry = 0
 				on error number -1712 -- Apple event timed out
 					delay 1
-					retry = true
-					set retries to retries + 1
+					set retries to retries - 1
 				end try
 			end repeat
 			
