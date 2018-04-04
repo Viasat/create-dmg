@@ -5,7 +5,7 @@ on run (volumeName)
 			repeat while retries > 0
 				try
 					open
-					retries = 0
+					set retries to 0
 				on error number -1712 -- Apple event timed out
 					delay 1
 					set retries to retries - 1
@@ -53,7 +53,7 @@ on run (volumeName)
 			repeat while retries > 0
 				try
 					open
-					retries = 0
+					set retries to 0
 				on error number -1712 -- Apple event timed out
 					delay 1
 					set retries to retries - 1
